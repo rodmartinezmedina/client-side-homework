@@ -9,7 +9,7 @@ import UsersContextProvider from './contexts/UsersContext';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       <UsersContextProvider>
         <UsersList />
       </UsersContextProvider>   
