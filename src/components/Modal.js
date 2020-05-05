@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Row, Col, Container } from 'reactstrap';
 import { UsersContext } from '../contexts/UsersContext';
 
 const ModalComponent = (props) => {
@@ -22,12 +23,13 @@ const ModalComponent = (props) => {
         <div>
           <Button color="primary" onClick={toggleModal}>Edit</Button>
           <Modal isOpen={modal} toggleModal={toggleModal} className={className}>
-            <ModalHeader toggleModal={toggleModal}>Modal title</ModalHeader>
+            <ModalHeader toggleModal={toggleModal}>Import User's name</ModalHeader>
             <ModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              <h1>Create a form here</h1>
+              
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={toggleModal}>Do Something</Button>{' '}
+              <Button color="primary" onClick={toggleModal}>Update user on click</Button>{' '}
               <Button color="secondary" onClick={toggleModal}>Cancel</Button>
             </ModalFooter>
           </Modal>
