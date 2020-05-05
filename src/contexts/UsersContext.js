@@ -25,17 +25,15 @@ class UsersContextProvider extends Component {
   };
 
   deleteUser = (id) => {
-    fetch('https://randomuser.me/api/?results=50')
-    .then(res => res.json())
-      .then(({data}) => {
-        let users = this.state.users.filter(oneUser => {
-          return oneUser._id !== id
-        })
-        console.log(`user ${id} was deleted`);        
-        this.setState({users})
-      })
-      .catch(err => console.log(err))
-  };
+    let updatedUsers = this.state.users.filter(oneUser => {
+      return oneUser.login.uuid !== id
+    });
+    console.log(`user ${id} was deleted`);
+    console.log(`Updated users array`, updatedUsers);
+
+    this.setState({users: updatedUsers })
+  }
+
 
     updateUser = (id) => {
     const { name, description } = this.state;

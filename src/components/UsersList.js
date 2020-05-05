@@ -20,7 +20,7 @@ function UsersList() {
             { users.map( (oneUser) => {
             return (
               <Col>
-                <Card>
+                <Card key={oneUser.login.uuid}>
                   <CardImg top width='200px' src={oneUser.picture.thumbnail} alt="Card image cap"/>
                   <CardBody>
                     <CardTitle>{oneUser.name.first} {oneUser.name.last}</CardTitle>
