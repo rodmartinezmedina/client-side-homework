@@ -1,6 +1,6 @@
 import React from 'react';
 import { UsersContext } from "../contexts/UsersContext";
-import { Button, Card, CardImg, CardBody, CardTitle,  } from 'reactstrap';
+import { Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, Row, Col, Container } from 'reactstrap';
 
 function UsersList() {
 
@@ -13,19 +13,30 @@ function UsersList() {
 
       return (
         <div>
-          <h1>List of Users from UsersContext.js </h1>
-          { users.map( (oneUser) => {
+        <Container>
+          <Row><h1>List of Users from UsersContext.js </h1></Row>
+          <Row xs="3">
+            { users.map( (oneUser) => {
             return (
-              <Card key={oneUser.id.value}>
-                <CardImg></CardImg>
-                <CardBody>
-                  <CardTitle>{oneUser.name.first} </CardTitle>
-                  <Button>Edit</Button>
-                  <Button>Delete</Button>
-                </CardBody>
-              </Card>
+              <Col>
+                <Card>
+                  <CardImg top width='200px' src={oneUser.picture.thumbnail} alt="Card image cap"/>
+                  <CardBody>
+                    <CardTitle>{oneUser.name.first} {oneUser.name.last}</CardTitle>
+                    <CardSubtitle>Age: {oneUser.dob.age}</CardSubtitle>
+                    <CardSubtitle>{oneUser.location.city}, {oneUser.location.state} </CardSubtitle>
+                    
+                    <Button>Edit</Button>
+                    <Button>Delete</Button>
+                  </CardBody>
+                </Card>
+                </Col>
             )
           })}
+
+          </Row>
+          
+        </Container>
         </div>
       )
       
