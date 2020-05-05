@@ -14,7 +14,7 @@ function UsersList() {
       return (
         <div>
         <Container>
-          <Row><h1>List of Users from UsersContext.js </h1></Row>
+          <Row><h1>The magic list of never-aging people</h1></Row>
           <Row xs="1" sm="2" lg="4">
             { users.map( (oneUser) => {
             return (
