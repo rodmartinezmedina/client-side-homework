@@ -10,15 +10,16 @@ function UsersList() {
 
       const {users, updateUser, deleteUser} = context;
       console.log(context);
+
       return (
         <div>
           <h1>List of Users from UsersContext.js </h1>
-          { users.map(oneUser => {
+          { users.map( (oneUser) => {
             return (
-              <Card>
+              <Card key={oneUser.id.value}>
                 <CardImg></CardImg>
                 <CardBody>
-                  <CardTitle>{oneUser.results.name.first} {oneUser.results.name.last} </CardTitle>
+                  <CardTitle>{oneUser.name.first} </CardTitle>
                   <Button>Edit</Button>
                   <Button>Delete</Button>
                 </CardBody>
@@ -27,6 +28,7 @@ function UsersList() {
           })}
         </div>
       )
+      
     }} 
     </UsersContext.Consumer>
   )

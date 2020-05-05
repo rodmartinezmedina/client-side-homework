@@ -5,7 +5,7 @@ export const UsersContext = createContext();
 
 class UsersContextProvider extends Component {
   state = {
-    users: [],  
+    users: []
   }
 
   componentDidMount() {
@@ -13,7 +13,7 @@ class UsersContextProvider extends Component {
     fetch('https://randomuser.me/api/?results=50')
     .then(res => res.json())
     .then((data) => {
-      this.setState({ users: data })
+      this.setState({ users: data.results })
     })
     .catch(console.log)
   }
@@ -32,7 +32,6 @@ class UsersContextProvider extends Component {
   };
 };
 
-const Consumer=UsersContext.Consumer
 export default UsersContextProvider;
 
 
