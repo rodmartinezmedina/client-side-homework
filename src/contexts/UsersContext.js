@@ -18,18 +18,20 @@ class UsersContextProvider extends Component {
     .catch(console.log)
   }
 
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
   deleteUser = (id) => {
-    this.state.axios
-      .delete(`/users/${id}`, {})
+    fetch('https://randomuser.me/api/?results=50')
+    .then(res => res.json())
       .then(({data}) => {
         let users = this.state.users.filter(oneUser => {
           return oneUser._id !== id
         })
+        console.log(`user ${id} was deleted`);        
         this.setState({users})
       })
       .catch(err => console.log(err))
