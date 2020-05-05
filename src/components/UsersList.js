@@ -2,6 +2,7 @@ import React from 'react';
 import { UsersContext } from "../contexts/UsersContext";
 import { Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, Row, Col, Container } from 'reactstrap';
 
+
 function UsersList() {
 
   return (
@@ -15,7 +16,7 @@ function UsersList() {
         <div>
         <Container>
           <Row><h1>List of Users from UsersContext.js </h1></Row>
-          <Row xs="3">
+          <Row xs="1" sm="2" lg="4">
             { users.map( (oneUser) => {
             return (
               <Col>
@@ -27,7 +28,7 @@ function UsersList() {
                     <CardSubtitle>{oneUser.location.city}, {oneUser.location.state} </CardSubtitle>
                     
                     <Button>Edit</Button>
-                    <Button>Delete</Button>
+                    <Button onClick={() => {deleteUser(oneUser.login.uuid)}}>Delete</Button>
                   </CardBody>
                 </Card>
                 </Col>

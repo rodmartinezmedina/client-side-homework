@@ -13,19 +13,52 @@ class UsersContextProvider extends Component {
     fetch('https://randomuser.me/api/?results=50')
     .then(res => res.json())
     .then((data) => {
-      this.setState({ users: data.results })
+      this.setState({ ...this.state, users: data.results })
     })
     .catch(console.log)
+  }
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  deleteUser = (id) => {
+    this.state.axios
+      .delete(`/users/${id}`, {})
+      .then(({data}) => {
+        let users = this.state.users.filter(oneUser => {
+          return oneUser._id !== id
+        })
+        this.setState({users})
+      })
+      .catch(err => console.log(err))
+  };
+
+    updateUser = (id) => {
+    const { name, description } = this.state;
+    this.state.axios
+      .put(`/users/${id}`, {name, description})
+      .then(({data}) => {
+        let user = this.state.users.filter(oneUser => {
+          return id === oneUser._id
+        })
+        user[0].name = name;
+        user[0].description = description;
+        this.setState({name: "", description: "", users: [...this.state.users, user]});
+      })
+      .catch(err => console.log(err));
   }
 
 
   render () {
     return (
-      <UsersContext.Provider value={this.state}
-        // handleChange: this.handleChange,
-        // updateUser: this.updateUser,
-        // deleteUser: this.deleteUser
-      >
+      <UsersContext.Provider value={{
+        ...this.state,
+        handleChange: this.handleChange,
+        updateUser: this.updateUser,
+        deleteUser: this.deleteUser
+      }}>
         {this.props.children}
       </UsersContext.Provider>
       );
@@ -33,41 +66,3 @@ class UsersContextProvider extends Component {
 };
 
 export default UsersContextProvider;
-
-
-
-
-  
-  // handleChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({ [name]: value });
-  // };
-
-
-  // updateUser = (id) => {
-  //   const { name, description } = this.state;
-  //   this.state.axios
-  //     .put(`/users/${id}`, {name, description})
-  //     .then(({data}) => {
-  //       let user = this.state.users.filter(oneUser => {
-  //         return id === oneUser._id
-  //       })
-  //       user[0].name = name;
-  //       user[0].description = description;
-  //       this.setState({name: "", description: "", users: [...this.state.users, user]});
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-
-  // deleteUser = (id) => {
-  //   this.state.axios
-  //     .delete(`/users/${id}`, {})
-  //     .then(({data}) => {
-  //       let users = this.state.users.filter(oneUser => {
-  //         return oneUser._id !== id
-  //       })
-  //       this.setState({name: "", description: "", users})
-  //     })
-  //     .catch(err => console.log(err))
-  // };    
