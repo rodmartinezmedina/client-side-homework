@@ -32,6 +32,7 @@ class UsersContextProvider extends Component {
   };
 };
 
+const Consumer=UsersContext.Consumer
 export default UsersContextProvider;
 
 
