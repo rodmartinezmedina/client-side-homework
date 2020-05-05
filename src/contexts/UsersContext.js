@@ -24,6 +24,7 @@ class UsersContextProvider extends Component {
     this.setState({ [name]: value });
   };
 
+  
   deleteUser = (id) => {
     let updatedUsers = this.state.users.filter(oneUser => {
       return oneUser.login.uuid !== id
