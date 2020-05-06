@@ -24,9 +24,6 @@ function UsersList() {
           <div>
           
             <Container>
-              <Row>
-                <h1 id='users-list-header'>The magic list of never-aging people</h1>
-              </Row>
 
               <Row xs="1" sm="2" lg='3' xl="4">
                 {users.map(oneUser => {

@@ -5,13 +5,11 @@
   font-family: 'Roboto', sans-serif;
 }
 
-#users-list-header {
-  padding-top: 30px;
-  padding-bottom: 40px;
-  margin-top: 3rem;
+.app-hero {
+  padding-top: 50px;
+  padding-bottom: 60px;
+  margin-top: 200px 1rem 4rem 1rem;
   margin-bottom: 4rem;
-  /* margin-left: auto;
-  margin-right: auto; */
   width: 100%;
   display: flex;
   justify-content: center;
