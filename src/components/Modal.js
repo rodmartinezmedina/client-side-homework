@@ -72,7 +72,7 @@ const ModalComponent = props => {
                     placeholder="Update Phone Number"
                   />
                 </FormGroup>
-                <Button color="primary" type="submit">
+                <Button color="primary" type="submit" onClick={toggleModal}>
                   Update user on click
                 </Button>{" "}
                 <Button color="secondary" onClick={toggleModal}>
