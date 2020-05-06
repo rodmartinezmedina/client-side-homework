@@ -29,8 +29,8 @@ function UsersList() {
               <Row xs="1" sm="2" lg="4">
                 {users.map(oneUser => {
                   return (
-                    <Col>
-                      <Card key={oneUser.login.uuid}>
+                    <Col key={oneUser.login.uuid}>
+                      <Card >
                         <CardImg
                           top
                           width="200px"

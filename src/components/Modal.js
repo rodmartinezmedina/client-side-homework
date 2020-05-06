@@ -1,96 +1,89 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Alert, Badge, Form, FormGroup, Label, Input } from "reactstrap";
 import { UsersContext } from "../contexts/UsersContext";
 
 const ModalComponent = props => {
-  const { buttonLabel, className, idUser } = props;
-
+  const { className, idUser } = props;
+  const usersContext = useContext(UsersContext);
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => setModal(!modal);
 
+  const { users, updateUser, getUser } = usersContext;
+
+  const user = getUser(idUser);
+  const [firstName, setFirstName] = useState(user.name.first);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const newUserData = {
+      ...user,
+      name: {
+        ...user.name,
+        first: firstName
+      }
+    };
+    console.log(newUserData);
+
+    updateUser(newUserData);
+  };
   return (
-    <UsersContext.Consumer>
-      {context => {
-        const { users, updateUser, getUser, handleChange } = context;
+    <>
+      {user && (
+        <div>
+          <Button color="primary" onClick={toggleModal}>
+            Edit
+          </Button>
+          <Modal isOpen={modal} toggleModal={toggleModal} className={className}>
+            <ModalHeader toggleModal={toggleModal}>
+              <Badge color="info">
+                <h3>User's details</h3>
+              </Badge>
+            </ModalHeader>
+            <ModalBody>
+              <Alert color="primary">Edit the selected user</Alert>
 
-        const user = getUser(idUser);
-        const handleUpdate = formData => {
-          /* user data here
-          * const newUserData = {
-            ...user,
-            phone: formData.phone,
-          }
-          */
-          //updateUser(newUserData);
-        };
+              <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                  <Label for="form-first-name">First Name</Label>
+                  <Input
+                    type="text"
+                    name="form-first-name"
+                    id="form-first-name"
+                    placeholder="Update First Name"
+                    onChange={e => setFirstName(e.target.value)}
+                    value={firstName}
+                  />
 
-        return (
-          <>
-            {user && (
-              <div>
-                <Button color="primary" onClick={toggleModal}>
-                  Edit
+                  <Label for="form-last-name">Last Name</Label>
+                  <Input
+                    type="text"
+                    name="form-last-name"
+                    id="form-last-name"
+                    placeholder="Update Last Name"
+                  />
+
+                  <Label for="form-phone-number">Email</Label>
+                  <Input
+                    type="text"
+                    name="form-phone-number"
+                    id="form-phone-number"
+                    placeholder="Update Phone Number"
+                  />
+                </FormGroup>
+                <Button color="primary" type="submit">
+                  Update user on click
+                </Button>{" "}
+                <Button color="secondary" onClick={toggleModal}>
+                  Cancel
                 </Button>
-                <Modal
-                  isOpen={modal}
-                  toggleModal={toggleModal}
-                  className={className}
-                >
-                  <ModalHeader className='modal-header' toggleModal={toggleModal}>
-                    <h3>Update User's details</h3>      
-                  </ModalHeader>
-                  <ModalBody className='modal-body'>
-
-                    <Form>
-                      <FormGroup>
-                        <Label for="form-first-name">First Name</Label>
-                        <Input
-                          type="text"
-                          name="form-first-name"
-                          id="form-first-name"
-                          placeholder={user.name.first}
-                          onChange={handleChange}
-                          value={modal.value}
-                        />
-
-                        <Label for="form-last-name">Last Name</Label>
-                        <Input
-                          type="text"
-                          name="form-last-name"
-                          id="form-last-name"
-                          placeholder={user.name.last}
-                          onChange={handleChange}                          
-                        />
-
-                        <Label for="form-phone-number">Phone</Label>
-                        <Input
-                          type="text"
-                          name="form-phone-number"
-                          id="form-phone-number"
-                          placeholder={user.phone}
-                          onChange={handleChange}
-                        />
-                      </FormGroup>
-                      <Button style={{backgroundColor: '#577590'}}
-                        color="primary"
-                        onClick={handleUpdate(/* input field values */)}
-                      >
-                        Save Changes
-                      </Button>
-                      <Button style={{backgroundColor: '#9b9c9b'}} onClick={toggleModal}>
-                        Cancel
-                      </Button>
-                    </Form>
-                  </ModalBody>
-                </Modal>
-              </div>
-            )}
-          </>
-        );
-      }}
-    </UsersContext.Consumer>
+              </Form>
+            </ModalBody>
+          </Modal>
+        </div>
+      )}
+    </>
   );
 };
 

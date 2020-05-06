@@ -30,23 +30,25 @@ class UsersContextProvider extends Component {
   };
 
   deleteUser = id => {
+    const users = this.state.users;
     let updatedUsers = this.state.users.filter(oneUser => {
       return oneUser.login.uuid !== id;
     });
+
     console.log(`user ${id} was deleted`);
-    // console.log(`Updated users array`, updatedUsers);
+    console.log(`Updated users array`, updatedUsers);
 
     this.setState({ users: updatedUsers });
   };
 
-  updateUser = (userData) => {
-    // let user = this.state.users.filter(oneUser => {
-    //   return oneUser.login.uuid === userData.login.uuid;
-    // });
-    // ** delete user (userData.login.uuid)** //
-    this.deleteUser(userData.login.uuid);
+  updateUser = userData => {
+    const users = this.state.users;
+    const userIndex = users.findIndex(
+      oneUser => oneUser.login.uuid === userData.login.uuid
+    );
+    users[userIndex] = userData;
     this.setState({
-      users: [...this.state.users, userData]
+      users: users
     });
   };
 
