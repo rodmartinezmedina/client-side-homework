@@ -1,48 +1,73 @@
-import React from 'react';
+import React from "react";
 import { UsersContext } from "../contexts/UsersContext";
-import { Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, Row, Col, Container } from 'reactstrap';
-import ModalComponent from './Modal'
+import {
+  Button,
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Row,
+  Col,
+  Container
+} from "reactstrap";
+import ModalComponent from "./Modal";
 
 function UsersList() {
   return (
-    <UsersContext.Consumer>    
-    {(context) => { 
+    <UsersContext.Consumer>
+      {context => {
+        const { users, updateUser, deleteUser } = context;
+        console.log(context);
 
-      const {users, updateUser, deleteUser} = context;
-      console.log(context, `this is a context`);
-
-      return (
-        <div>
-        <Container>
-          <Row><h1>The magic list of never-aging people</h1></Row>
-          <Row xs="1" sm="2" lg="4">
-            { users.map( (oneUser) => {
-            return (
-              <Col>
-                <Card key={oneUser.login.uuid}>
-                  <CardImg top width='200px' src={oneUser.picture.large} alt="Card image cap"/>
-                  <CardBody>
-                    <CardTitle>{oneUser.name.first} {oneUser.name.last}</CardTitle>
-                    <CardSubtitle>Age: {oneUser.dob.age}</CardSubtitle>
-                    <CardSubtitle>{oneUser.location.city}, {oneUser.location.state} </CardSubtitle>
-                    <ModalComponent userId={oneUser.login.uuid}>Edit</ModalComponent>
-                    {/* <Button onClick={() => {}}  >Edit</Button> */}
-                    <Button onClick={() => {deleteUser(oneUser.login.uuid)}}>Delete</Button>
-                  </CardBody>
-                </Card>
-                </Col>
-            )
-          })}
-
-          </Row>
-          
-        </Container>
-        </div>
-      )
-      
-    }} 
+        return (
+          <div>
+            <Container>
+              <Row>
+                <h1>The magic list of never-aging people</h1>
+              </Row>
+              <Row xs="1" sm="2" lg="4">
+                {users.map(oneUser => {
+                  return (
+                    <Col>
+                      <Card key={oneUser.login.uuid}>
+                        <CardImg
+                          top
+                          width="200px"
+                          src={oneUser.picture.large}
+                          alt="Card image cap"
+                        />
+                        <CardBody>
+                          <CardTitle>
+                            {oneUser.name.first} {oneUser.name.last}
+                          </CardTitle>
+                          <CardSubtitle>Age: {oneUser.dob.age}</CardSubtitle>
+                          <CardSubtitle>
+                            {oneUser.location.city}, {oneUser.location.state}{" "}
+                          </CardSubtitle>
+                          <ModalComponent idUser={oneUser.login.uuid}>
+                            Edit
+                          </ModalComponent>
+                          {/* <Button onClick={() => {}}  >Edit</Button> */}
+                          <Button
+                            onClick={() => {
+                              deleteUser(oneUser.login.uuid);
+                            }}
+                          >
+                            Delete
+                          </Button>
+                        </CardBody>
+                      </Card>
+                    </Col>
+                  );
+                })}
+              </Row>
+            </Container>
+          </div>
+        );
+      }}
     </UsersContext.Consumer>
-  )
+  );
 }
 
 export default UsersList;
