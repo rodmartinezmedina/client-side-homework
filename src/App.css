@@ -10,7 +10,11 @@
 }
 
 #users-list-header {
-  margin: 3rem 2rem 4rem 2rem;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
   display: flex;
   justify-content: center;
   text-align: center;
