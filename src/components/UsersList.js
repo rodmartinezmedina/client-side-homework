@@ -24,7 +24,7 @@ function UsersList() {
           <div>
             <Container>
               <Row>
-                <h1>The magic list of never-aging people</h1>
+                <h1 id='users-list-header'>The magic list of never-aging people</h1>
               </Row>
               <Row xs="1" sm="2" lg="4">
                 {users.map(oneUser => {
@@ -37,25 +37,29 @@ function UsersList() {
                           src={oneUser.picture.large}
                           alt="Card image cap"
                         />
-                        <CardBody>
-                          <CardTitle>
+                        <CardBody className='card-body'>
+                          <CardTitle className='card-title'>
                             {oneUser.name.first} {oneUser.name.last}
                           </CardTitle>
-                          <CardSubtitle>Age: {oneUser.dob.age}</CardSubtitle>
-                          <CardSubtitle>
-                            {oneUser.location.city}, {oneUser.location.state}{" "}
-                          </CardSubtitle>
-                          <ModalComponent idUser={oneUser.login.uuid}>
-                            Edit
-                          </ModalComponent>
-                          {/* <Button onClick={() => {}}  >Edit</Button> */}
-                          <Button
-                            onClick={() => {
-                              deleteUser(oneUser.login.uuid);
-                            }}
-                          >
-                            Delete
-                          </Button>
+                          <CardSubtitle className='card-subtitle'>
+                          Age: {oneUser.dob.age}</CardSubtitle>
+                          
+                          <CardSubtitle className='card-subtitle'>{oneUser.location.state}</CardSubtitle>
+                          
+                          <Row className='card-btn-row'>
+                            <ModalComponent className='users-list-edit-btn' idUser={oneUser.login.uuid}>
+                              Edit
+                            </ModalComponent>
+                          
+                            <Button className='users-list-delete-btn'
+                              onClick={() => {
+                                deleteUser(oneUser.login.uuid);
+                              }}
+                            >Delete
+                            </Button>
+
+                          </Row>
+
                         </CardBody>
                       </Card>
                     </Col>
