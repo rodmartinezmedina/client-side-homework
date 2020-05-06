@@ -25,7 +25,7 @@ const ModalComponent = props => {
       }
     };
     console.log(newUserData);
-
+    setModal(!modal)
     updateUser(newUserData);
   };
   return (
@@ -72,7 +72,7 @@ const ModalComponent = props => {
                     placeholder="Update Phone Number"
                   />
                 </FormGroup>
-                <Button color="primary" type="submit" onClick={toggleModal}>
+                <Button color="primary" type="submit">
                   Update user on click
                 </Button>{" "}
                 <Button color="secondary" onClick={toggleModal}>
