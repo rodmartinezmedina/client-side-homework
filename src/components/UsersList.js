@@ -22,15 +22,17 @@ function UsersList() {
 
         return (
           <div>
+          
             <Container>
               <Row>
                 <h1 id='users-list-header'>The magic list of never-aging people</h1>
               </Row>
-              <Row xs="1" sm="2" lg="4">
+
+              <Row xs="1" sm="2" lg='3' xl="4">
                 {users.map(oneUser => {
                   return (
                     <Col key={oneUser.login.uuid}>
-                      <Card >
+                      <Card className='user-card'>
                         <CardImg
                           top
                           width="200px"
@@ -43,9 +45,7 @@ function UsersList() {
                           </CardTitle>
                           <CardSubtitle className='card-subtitle'>
                           Age: {oneUser.dob.age}</CardSubtitle>
-                          
-                          <CardSubtitle className='card-subtitle'>{oneUser.location.state}</CardSubtitle>
-                          
+                        
                           <Row className='card-btn-row'>
                             <ModalComponent className='users-list-edit-btn' 
                               idUser={oneUser.login.uuid}>
@@ -58,7 +58,7 @@ function UsersList() {
                               }}
                             >Delete
                             </Button>
-
+                     
                           </Row>
 
                         </CardBody>

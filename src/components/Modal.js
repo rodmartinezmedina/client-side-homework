@@ -41,13 +41,10 @@ const ModalComponent = props => {
             Edit
           </Button>
           <Modal isOpen={modal} toggleModal={toggleModal} className={className}>
-            <ModalHeader toggleModal={toggleModal}>
-              <Badge color="info">
-                <h3>User's details</h3>
-              </Badge>
+            <ModalHeader toggleModal={toggleModal}>              
+                <h3>Edit User's details</h3>
             </ModalHeader>
             <ModalBody>
-              <Alert color="primary">Edit the selected user</Alert>
 
               <Form onSubmit={handleSubmit}>
                 <FormGroup>
@@ -81,10 +78,11 @@ const ModalComponent = props => {
                     value={phoneNum}
                   />
                 </FormGroup>
-                <Button color="primary" type="submit">
-                  Update user on click
+                <Button style={{backgroundColor: '#4361ee'}}  color="primary" type="submit">
+                  Save Changes
                 </Button>{" "}
-                <Button color="secondary" onClick={toggleModal}>
+                <Button 
+                  style={{backgroundColor: '#f25f5c'}} onClick={toggleModal}>
                   Cancel
                 </Button>
               </Form>
