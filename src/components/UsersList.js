@@ -9,7 +9,7 @@ function UsersList() {
     {(context) => { 
 
       const {users, updateUser, deleteUser} = context;
-      console.log(context);
+      console.log(context, `this is a context`);
 
       return (
         <div>
@@ -25,7 +25,7 @@ function UsersList() {
                     <CardTitle>{oneUser.name.first} {oneUser.name.last}</CardTitle>
                     <CardSubtitle>Age: {oneUser.dob.age}</CardSubtitle>
                     <CardSubtitle>{oneUser.location.city}, {oneUser.location.state} </CardSubtitle>
-                    <ModalComponent>Edit</ModalComponent>
+                    <ModalComponent userId={oneUser.login.uuid}>Edit</ModalComponent>
                     {/* <Button onClick={() => {}}  >Edit</Button> */}
                     <Button onClick={() => {deleteUser(oneUser.login.uuid)}}>Delete</Button>
                   </CardBody>

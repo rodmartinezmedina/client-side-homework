@@ -36,20 +36,20 @@ class UsersContextProvider extends Component {
   }
 
 
-    updateUser = (id) => {
-    const { name, description } = this.state;
-    this.state.axios
-      .put(`/users/${id}`, {name, description})
-      .then(({data}) => {
-        let user = this.state.users.filter(oneUser => {
-          return id === oneUser._id
-        })
-        user[0].name = name;
-        user[0].description = description;
-        this.setState({name: "", description: "", users: [...this.state.users, user]});
-      })
-      .catch(err => console.log(err));
-  }
+  //   updateUser = (id) => {
+  //   const { name, description } = this.state;
+  //   this.state.axios
+  //     .put(`/users/${id}`, {name, description})
+  //     .then(({data}) => {
+  //       let user = this.state.users.filter(oneUser => {
+  //         return id === oneUser._id
+  //       })
+  //       user[0].name = name;
+  //       user[0].description = description;
+  //       this.setState({name: "", description: "", users: [...this.state.users, user]});
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
 
   render () {

@@ -16,7 +16,7 @@ const ModalComponent = (props) => {
   return (
     <UsersContext.Consumer>
     {(context) => {
-      const {users, updateUser} = context;
+      const {users, updateUser, handleChange} = context;
       console.log(context);
 
       return (
@@ -34,16 +34,29 @@ const ModalComponent = (props) => {
               <Form>
                 <FormGroup>
                   <Label for="form-first-name">First Name</Label>
-                  <Input type="text" name="form-first-name" id="form-first-name" placeholder="Update First Name" />
+                  <Input 
+                    type="text" 
+                    name="form-first-name" 
+                    id="form-first-name" 
+                    placeholder="Update First Name"
+                    
+                     />
 
                   <Label for="form-last-name">Last Name</Label>
-                  <Input type="text" name="form-last-name" id="form-last-name" placeholder="Update Last Name" />
+                  <Input 
+                    type="text" 
+                    name="form-last-name" 
+                    id="form-last-name" 
+                    placeholder="Update Last Name" 
+                    
+                    />
 
                   <Label for="form-phone-number">Email</Label>
-                  <Input type="text" name="form-phone-number" id="form-phone-number" placeholder="Update Phone Number" />
+                  <Input 
+                    type="text" name="form-phone-number" id="form-phone-number" placeholder="Update Phone Number" />
                 </FormGroup>
                 
-                <Button color="primary" onClick={toggleModal}>Update user on click</Button>{' '}
+                <Button color="primary" onClick={toggleModal, updateUser}>Update user on click</Button>{' '}
                 <Button color="secondary" onClick={toggleModal}>Cancel</Button>
                 </Form>
               
