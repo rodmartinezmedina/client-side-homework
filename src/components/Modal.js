@@ -13,7 +13,7 @@ const ModalComponent = props => {
   return (
     <UsersContext.Consumer>
       {context => {
-        const { users, updateUser, getUser } = context;
+        const { users, updateUser, getUser, handleChange } = context;
 
         const user = getUser(idUser);
         const handleUpdate = formData => {
@@ -53,8 +53,9 @@ const ModalComponent = props => {
                           type="text"
                           name="form-first-name"
                           id="form-first-name"
-                          placeholder="Update First Name"
-                          value={user.name.first}
+                          placeholder={user.name.first}
+                          onChange={handleChange}
+                          value={modal.value}
                         />
 
                         <Label for="form-last-name">Last Name</Label>
@@ -62,8 +63,8 @@ const ModalComponent = props => {
                           type="text"
                           name="form-last-name"
                           id="form-last-name"
-                          placeholder="Update Last Name"
-                          value={user.name.last}
+                          placeholder={user.name.last}
+                          onChange={handleChange}                          
                         />
 
                         <Label for="form-phone-number">Phone</Label>
@@ -71,8 +72,8 @@ const ModalComponent = props => {
                           type="text"
                           name="form-phone-number"
                           id="form-phone-number"
-                          placeholder="Update Phone Number"
-                          value={user.phone}
+                          placeholder={user.phone}
+                          onChange={handleChange}
                         />
                       </FormGroup>
                       <Button

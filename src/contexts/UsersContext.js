@@ -34,12 +34,12 @@ class UsersContextProvider extends Component {
       return oneUser.login.uuid !== id;
     });
     console.log(`user ${id} was deleted`);
-    console.log(`Updated users array`, updatedUsers);
+    // console.log(`Updated users array`, updatedUsers);
 
     this.setState({ users: updatedUsers });
   };
 
-  updateUser = userData => {
+  updateUser = (userData) => {
     // let user = this.state.users.filter(oneUser => {
     //   return oneUser.login.uuid === userData.login.uuid;
     // });
