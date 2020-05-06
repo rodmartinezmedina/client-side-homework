@@ -14,6 +14,9 @@ const ModalComponent = props => {
 
   const user = getUser(idUser);
   const [firstName, setFirstName] = useState(user.name.first);
+  const [lastName, setLastName] = useState(user.name.last);
+  const [phoneNum, setPhoneNum] = useState(user.phone);
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -21,8 +24,10 @@ const ModalComponent = props => {
       ...user,
       name: {
         ...user.name,
-        first: firstName
-      }
+        first: firstName,
+        last: lastName
+      },
+      phone: phoneNum
     };
     console.log(newUserData);
     setModal(!modal)
@@ -62,6 +67,8 @@ const ModalComponent = props => {
                     name="form-last-name"
                     id="form-last-name"
                     placeholder="Update Last Name"
+                    onChange={e => setLastName(e.target.value)}
+                    value={lastName}
                   />
 
                   <Label for="form-phone-number">Email</Label>
@@ -70,6 +77,8 @@ const ModalComponent = props => {
                     name="form-phone-number"
                     id="form-phone-number"
                     placeholder="Update Phone Number"
+                    onChange={e => setPhoneNum(e.target.value)}
+                    value={phoneNum}
                   />
                 </FormGroup>
                 <Button color="primary" type="submit">
