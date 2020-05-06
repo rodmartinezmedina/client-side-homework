@@ -63,14 +63,16 @@ const ModalComponent = props => {
                           name="form-last-name"
                           id="form-last-name"
                           placeholder="Update Last Name"
+                          value={user.name.last}
                         />
 
-                        <Label for="form-phone-number">Email</Label>
+                        <Label for="form-phone-number">Phone</Label>
                         <Input
                           type="text"
                           name="form-phone-number"
                           id="form-phone-number"
                           placeholder="Update Phone Number"
+                          value={user.phone}
                         />
                       </FormGroup>
                       <Button
