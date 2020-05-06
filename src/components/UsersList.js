@@ -47,7 +47,8 @@ function UsersList() {
                           <CardSubtitle className='card-subtitle'>{oneUser.location.state}</CardSubtitle>
                           
                           <Row className='card-btn-row'>
-                            <ModalComponent className='users-list-edit-btn' idUser={oneUser.login.uuid}>
+                            <ModalComponent className='users-list-edit-btn' 
+                              idUser={oneUser.login.uuid}>
                               Edit
                             </ModalComponent>
                           

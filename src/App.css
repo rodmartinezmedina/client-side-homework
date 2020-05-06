@@ -1,7 +1,9 @@
+
+
 .App {
   text-align: center;
-  background-color: #2c4268;
-  color: #f2e9e4;
+  background-color: #f2e9e4;
+  color: #2c4268;
   font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center ;
@@ -17,11 +19,11 @@
 }
 
 .card-body {
-  background-color: #ebebeb;
+  background-color: #2c4268;
 }
 
 .card-title {
-  color:#2c4268;
+  color:#e2e2df;
   font-weight: 600;
   font-size: 24px;
   margin-left: -30px;
@@ -29,7 +31,7 @@
 }
 
 .card-subtitle {
-  color: #714674; 
+  color: #e2cfc4; 
   margin-left: -30px;
   margin-right: -30px;
   font-size: 22px;
@@ -43,6 +45,15 @@
   justify-content: center;
 }
 
-.users-list-delete-btn {
-  background-color: #e07a5f;
+.modal-header {
+  background-color: #2c4268;
+  color: #f2e9e4;
+}
+
+.modal-body {
+  background-color: #e2e2df; 
+}
+
+.form-btn-save {
+  color: #2c4268;
 }
